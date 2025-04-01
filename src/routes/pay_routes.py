@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
-from services.epayco_service import create_payment
-from services.mail_service import send_payment_notification
+from src.services.epayco_service import create_payment
+from src.services.mail_service import send_payment_notification
 
 # Crear el Blueprint para las rutas de pago
 payment_routes = Blueprint('payment_routes', __name__)

@@ -7,15 +7,15 @@ load_dotenv()
 
 E_PAYCO_PUBLIC_KEY = os.getenv("API_KEY")
 E_PAYCO_PRIVATE_KEY = os.getenv("PRIVATE_KEY")
+API_ENDPOINT = os.getenv("API_ENDPOINT")
 
 def create_payment(amount, currency, description, email):
-    url = "https://secure.epayco.co/transaction/create"
     headers = {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {E_PAYCO_PRIVATE_KEY}"
     }
     data = {
         "public_key": E_PAYCO_PUBLIC_KEY,
-        "private_key": E_PAYCO_PRIVATE_KEY,
         "amount": amount,
         "currency": currency,
         "description": description,
@@ -23,7 +23,7 @@ def create_payment(amount, currency, description, email):
         "test": True  # Set to True for testing purposes
     }
     
-    response = requests.post(url, json=data, headers=headers)
+    response = requests.post(API_ENDPOINT, json=data, headers=headers)
     
     if response.status_code == 200:
         return response.json()
