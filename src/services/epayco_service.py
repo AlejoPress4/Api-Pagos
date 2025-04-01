@@ -9,7 +9,7 @@ E_PAYCO_PUBLIC_KEY = os.getenv("API_KEY")
 E_PAYCO_PRIVATE_KEY = os.getenv("PRIVATE_KEY")
 
 def create_payment(amount, currency, description, email):
-    url = "https://api.epayco.co/payment/create/"
+    url = "https://secure.epayco.co/transaction/create"
     headers = {
         "Content-Type": "application/json"
     }
