@@ -1,7 +1,14 @@
-from flask import Flask, request
+import os
+from dotenv import load_dotenv
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+
+# Cargar las variables del archivo .env
+load_dotenv()
+
+EMAIL_ADDRESS = os.getenv("EMAIL_HOST_USER")
+EMAIL_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 
 def send_payment_notification(email_recipient):
     subject = "Pago Realizado con Éxito"
